@@ -1,0 +1,61 @@
+<div>
+  <div>{{ item | json }}</div>
+  <form #form="ngForm" noValidate (ngSubmit)="submit(form.value)">
+    <input type="text" name="id" [ngModel]="item?.id" hidden />
+
+    <div>
+      <label for="">
+        Full name:
+        <input
+          type="text"
+          name="fullName"
+          #fullName="ngModel"
+          [ngModel]="item?.fullName"
+          minlength="3"
+          required
+        />
+      </label>
+      <div class="error" *ngIf="fullName.errors?.required && fullName?.dirty">
+        this field is required
+      </div>
+      <div class="error" *ngIf="fullName.errors?.minlength && fullName?.dirty">
+        this field requires minimum 3 characters
+      </div>
+    </div>
+
+    <div>
+      <label for="">
+        Is checkedIn?:
+        <input
+          type="checkbox"
+          name="checkedIn"
+          [ngModel]="item?.checkedIn"
+          (ngModelChange)="checkInHandle($event)"
+        />
+      </label>
+    </div>
+
+    <div *ngIf="form.value?.checkedIn">
+      <input type="date" [value]="toDate(item?.checkInDate)" />
+      <input
+        type="number"
+        [ngModel]="item?.checkInDate"
+        name="checkInDate"
+        hidden
+      />
+    </div>
+    <div>
+      <select name="baggage" id="" ngModel>
+        <option
+          *ngFor="let baggage of baggages"
+          [value]="baggage.key"
+          [selected]="baggage.key === item?.baggage"
+        >
+          {{ baggage.value }}
+        </option>
+      </select>
+    </div>
+    <button type="submit" [disabled]="form.invalid">submit</button>
+  </form>
+  <div>{{ form.value | json }}</div>
+</div>

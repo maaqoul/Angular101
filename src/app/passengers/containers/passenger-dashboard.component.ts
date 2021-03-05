@@ -26,24 +26,18 @@ export class PassengerDashboardComponent implements OnInit, OnDestroy {
   constructor(private passengerService: PassengerService) {}
 
   ngOnInit() {
-    this.passengerService
-      .getPassengers()
-      .then((passengers) => {
-        this.passengers = passengers;
-      })
-      .catch(this.logError);
+    this.passengerService.getPassengers().subscribe((passengers) => {
+      this.passengers = passengers;
+    }, this.logError);
   }
 
   editPassenger(passenger: Passenger) {
     this.passengersSubscription$ = this.passengerService
-      .editPassenger(passenger.id, passenger)
+      .editPassenger(passenger)
       .subscribe((passenger) => {
-        this.passengers = this.passengers.map((p) => {
-          if (p.id === passenger.id) {
-            return Object.assign({}, p, passenger);
-          }
-          return p;
-        });
+        this.passengers = this.passengers.map((p) =>
+          passenger.id === p.id ? { ...passenger } : p
+        );
       }, this.logError);
   }
 

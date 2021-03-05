@@ -1,3 +1,4 @@
+type stringOrUndefined = string | undefined;
 interface child {
   name: string;
   age: number;
@@ -8,6 +9,7 @@ export interface Passenger {
   checkedIn: boolean;
   checkInDate: number;
   children?: child[];
+  baggage?: stringOrUndefined;
 }
 
 export const passengers: Passenger[] = [
@@ -64,3 +66,22 @@ export const passengers: Passenger[] = [
     checkInDate: null,
   },
 ];
+
+// const baggage: Baggage[] = [
+//   {
+//     key: "none",
+//     value: "No baggage",
+//   },
+//   {
+//     key: "hand-only",
+//     value: "Hand baggage",
+//   },
+//   {
+//     key: "hold-only",
+//     value: "Hold baggage",
+//   },
+//   {
+//     key: "hand-hold",
+//     value: "Hand and hold baggage",
+//   },
+// ];

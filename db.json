@@ -2,15 +2,10 @@
   "passengers": [
     {
       "id": 2,
-      "fullName": "Chastity edited",
-      "checkedIn": false,
-      "checkinDate": "1586203078000",
-      "children": [
-        {},
-        {},
-        {},
-        {}
-      ]
+      "fullName": "edit",
+      "checkedIn": true,
+      "baggage": "",
+      "checkInDate": 1614963273475
     },
     {
       "id": 3,
@@ -19,7 +14,8 @@
       "checkinDate": "1592577098000",
       "children": [
         {}
-      ]
+      ],
+      "baggage": ""
     },
     {
       "id": 4,
@@ -28,7 +24,8 @@
       "checkinDate": "1605004894000",
       "children": [
         {}
-      ]
+      ],
+      "baggage": ""
     },
     {
       "id": 5,
@@ -39,7 +36,8 @@
         {},
         {},
         {}
-      ]
+      ],
+      "baggage": ""
     },
     {
       "id": 6,
@@ -73,7 +71,8 @@
       "children": [
         {},
         {}
-      ]
+      ],
+      "baggage": ""
     },
     {
       "id": 9,
@@ -85,7 +84,8 @@
         {},
         {},
         {}
-      ]
+      ],
+      "baggage": ""
     },
     {
       "id": 10,
@@ -98,7 +98,8 @@
         {},
         {},
         {}
-      ]
+      ],
+      "baggage": ""
     }
   ]
 }

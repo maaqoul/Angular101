@@ -11,14 +11,16 @@ const URL = "http://localhost:3000/passengers";
 export class PassengerService {
   constructor(private http: HttpClient) {}
 
-  public getPassengers(): Promise<Passenger[]> {
-    return this.http.get<Passenger[]>(URL).toPromise();
+  public getPassenger(id): Observable<Passenger> {
+    return this.http.get<Passenger>(`${URL}/${id}`);
   }
 
-  public editPassenger(
-    id: number,
-    passenger: Passenger
-  ): Observable<Passenger> {
+  public getPassengers(): Observable<Passenger[]> {
+    return this.http.get<Passenger[]>(URL);
+  }
+
+  public editPassenger(passenger: Passenger): Observable<Passenger> {
+    const { id } = passenger;
     return this.http.put<Passenger>(`${URL}/${id}`, passenger);
   }
 
